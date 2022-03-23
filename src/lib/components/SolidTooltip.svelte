@@ -1,51 +1,52 @@
 <script lang="ts">
-	import type { TooltipOffset, TooltipPlace } from '$lib/types';
-	import TooltipSolid  from '$lib/components/SolidTooltip.svelte'
-	export let body;
-	export let mouseX;
-	export let mouseY;
-	export let effect;
-	export let place: TooltipPlace;
-	export let targetDOMRect
-	// export let offset: TooltipOffset;
-	// const { top, left } = offset;
+  export let body: string
+  export let place: string
+  export let targetDOMRect
 
+  console.log(targetDOMRect)
+  const { left, top, right, bottom, height, width } = targetDOMRect
+
+  const offset = 15
+  
 	const placeMap = {
-		top: { xAxis: -50, yAxis: -100, top: -15, left: 0 },
-		bottom: { xAxis: -50, yAxis: 0, top: 15, left: 0 },
-		left: { xAxis: -100, yAxis: -50, top: 0, left: -15 },
-		right: { xAxis: 0, yAxis: -50, top: 0, left: 15 }
+		top: { xAxis: -50, yAxis: 0, top: (top - height / 2) - offset, left: left + width / 2 },
+    bottom: { xAxis: -50, yAxis: 0, top: top + height + offset, left: left + width / 2 },
+		left: { xAxis: -100, yAxis: 50, top: top, left: left - offset },
+		right: { xAxis: 0, yAxis: 50, top: top, left: left + width + offset}
 	};
 
-	const { xAxis, yAxis, top, left } = placeMap[place];
+  const { xAxis, yAxis, top:topPos, left:leftPos } = placeMap[place];
 </script>
 
-<TooltipSolid targetDOMRect={targetDOMRect} body={body} place={place}/>
+<!-- <div
+  style="left: {right + 15}px; top: {top + (height / 2)}px;"
+	class="tooltip-solid {place}"
+> -->
 
 <div
-	style="top: {mouseY + top}px; left: {mouseX + left}px; transform: translate({xAxis}%, {yAxis}%);"
-	class="tooltip {place}"
+  style="left: {leftPos}px; top: {topPos}px; transform: translate({xAxis}%, {yAxis}%);"
+	class="tooltip-solid {place}"
 >
 	{body}
 </div>
 
 <style>
-	.tooltip {
+	.tooltip-solid {
 		--main-bg-color: rgba(20, 19, 24, 0.9);
 	}
-
-	.tooltip {
+  .tooltip-solid {
 		background-color: var(--main-bg-color);
 		color: #fff;
-		border: solid 1px;
 		opacity: 1;
-		position: absolute;
 		padding: 1em;
 		border-radius: 4px;
     white-space: nowrap;
+    display: inline;
+    position: absolute;
+    
 	}
 
-	.top::after {
+  .top::after {
 		content: ' ';
 		position: absolute;
 		top: 100%;

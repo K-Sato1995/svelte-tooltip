@@ -15,7 +15,8 @@ export const tooltip = (node, props: ToolTipConifg) => {
 
 	const offset = props.offset ? props.offset : defaultConfig.offset;
 	const place = props.place ? props.place : defaultConfig.place;
-
+	const DOMRect = node.getBoundingClientRect()
+	
 	const handleMouseOver = (event: MouseEvent) => {
 		tooltipComp = new Tooltip({
 			props: {
@@ -23,7 +24,8 @@ export const tooltip = (node, props: ToolTipConifg) => {
 				mouseX: event.pageX,
 				mouseY: event.pageY,
 				offset: offset,
-				place: place
+				place: place,
+				targetDOMRect: DOMRect
 			},
 			target: document.body
 		});

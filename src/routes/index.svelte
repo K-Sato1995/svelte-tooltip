@@ -4,7 +4,7 @@
 
 	const tooltipConfig = {
 		body: 'testbody',
-		place: 'right',
+		place: 'bottom',
 		// type:
 		// effect:
 		offset: { top: 0, left: 0 }
@@ -12,6 +12,7 @@
 </script>
 
 <h1 class="box" use:devTooltip={tooltipConfig}>Hello World</h1>
+
 
 <h1 use:SvelteTooltip={tooltipConfig}>Packfage</h1>
 
@@ -28,6 +29,8 @@
 	.box {
 		border: solid 1px;
 		width: 400px;
+		margin: 0 auto;
+		margin-top: 300px;
 		height: 100px;
 	}
 </style>
