@@ -1,13 +1,14 @@
 <script lang="ts">
-	import type {  TooltipPlace, TooltipEffect } from '$lib/types';
+	import type { TooltipPlace, TooltipEffect, TooltipType } from '$lib/types';
 	export let body;
 	export let mouseX;
 	export let mouseY;
+	export let type: TooltipType;
 	export let effect: TooltipEffect;
 	export let place: TooltipPlace;
 	export let targetDOMRect;
 
-	const offset = { offsetTop: 15, offsetLeft: 15 }
+	const offset = { offsetTop: 15, offsetLeft: 15 };
 
 	// FLOAT: Relative to the mouse position
 	const floatPlaceMap = {
@@ -47,7 +48,7 @@
 				mouseX + left
 		  }px; transform: translate(${floatXAxis}%, ${floatYAxis}%);`
 		: `left: ${leftPos}px; top: ${topPos}px; transform: translate(${solidXAxis}%, ${solidYAxis}%)`}
-	class="tooltip {place}"
+	class="tooltip {type} {place}"
 >
 	{body}
 </div>
@@ -55,6 +56,10 @@
 <style>
 	.tooltip {
 		--main-bg-color: rgba(20, 19, 24, 0.9);
+		--success-bg-color: rgba(40, 167, 70, 0.9);
+		--error-bg-color: rgba(220, 52, 70, 0.9);
+		--warning-bg-color: rgba(252, 200, 34, 0.9);
+		--info-bg-color: rgba(35, 162, 184, 0.9);
 	}
 
 	.tooltip {
@@ -76,7 +81,6 @@
 		border-width: 5px;
 		border-style: solid;
 		border-color: var(--main-bg-color) transparent transparent transparent;
-		opacity: 0.9;
 	}
 
 	.bottom::after {
@@ -110,5 +114,70 @@
 		border-width: 5px;
 		border-style: solid;
 		border-color: transparent transparent transparent var(--main-bg-color);
+	}
+
+	.success {
+		background-color: var(--success-bg-color);
+	}
+	.error {
+		background-color: var(--error-bg-color);
+	}
+	.warning {
+		background-color: var(--warning-bg-color);
+	}
+	.info {
+		background-color: var(--info-bg-color);
+	}
+
+	.right[class~='success']::after {
+		border-color: transparent var(--success-bg-color) transparent transparent;
+	}
+	.right[class~='error']::after {
+		border-color: transparent var(--error-bg-color) transparent transparent;
+	}
+	.right[class~='warning']::after {
+		border-color: transparent var(--warning-bg-color) transparent transparent;
+	}
+	.right[class~='info']::after {
+		border-color: transparent var(--info-bg-color) transparent transparent;
+	}
+
+	.left[class~='success']::after {
+		border-color: transparent transparent transparent var(--success-bg-color);
+	}
+	.left[class~='error']::after {
+		border-color: transparent transparent transparent var(--error-bg-color);
+	}
+	.left[class~='warning']::after {
+		border-color: transparent transparent transparent var(--warning-bg-color);
+	}
+	.left[class~='info']::after {
+		border-color: transparent transparent transparent var(--info-bg-color);
+	}
+
+	.bottom[class~='success']::after {
+		border-color: transparent transparent var(--success-bg-color) transparent;
+	}
+	.bottom[class~='error']::after {
+		border-color: transparent transparent var(--error-bg-color) transparent;
+	}
+	.bottom[class~='warning']::after {
+		border-color: transparent transparent var(--warning-bg-color) transparent;
+	}
+	.bottom[class~='info']::after {
+		border-color: transparent transparent var(--info-bg-color) transparent;
+	}
+
+	.top[class~='success']::after {
+		border-color: var(--success-bg-color) transparent transparent transparent;
+	}
+	.top[class~='error']::after {
+		border-color: var(--error-bg-color) transparent transparent transparent;
+	}
+	.top[class~='warning']::after {
+		border-color: var(--warning-bg-color) transparent transparent transparent;
+	}
+	.top[class~='info']::after {
+		border-color: var(--info-bg-color) transparent transparent transparent;
 	}
 </style>

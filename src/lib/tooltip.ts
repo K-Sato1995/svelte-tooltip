@@ -6,7 +6,7 @@ const defaultConfig: ToolTipConifg = {
 	body: '',
 	place: 'right',
 	effect: 'float',
-	type: 'dark',
+	type: 'dark'
 };
 
 export const tooltip = (node, props: ToolTipConifg) => {
@@ -14,6 +14,7 @@ export const tooltip = (node, props: ToolTipConifg) => {
 
 	const place = props.place ? props.place : defaultConfig.place;
 	const effect = props.effect ? props.effect : defaultConfig.effect;
+	const type = props.type ? props.type : defaultConfig.type;
 	const DOMRect = node.getBoundingClientRect();
 
 	const handleMouseOver = (event: MouseEvent) => {
@@ -24,6 +25,7 @@ export const tooltip = (node, props: ToolTipConifg) => {
 				mouseY: event.pageY,
 				place: place,
 				effect: effect,
+				type: type,
 				targetDOMRect: DOMRect
 			},
 			target: document.body
