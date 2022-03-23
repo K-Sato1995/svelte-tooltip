@@ -4,21 +4,21 @@
 	export let mouseX;
 	export let mouseY;
 	export let place: TooltipPlace;
-	export let offset: TooltipOffset;
-
-	const { top, left } = offset;
+	// export let offset: TooltipOffset;
+	// const { top, left } = offset;
 
 	const placeMap = {
-		top: { xAxis: -50, yAxis: -110 },
-		bottom: { xAxis: -50, yAxis: 10 },
-		left: { xAxis: -110, yAxis: -50 },
-		right: { xAxis: 10, yAxis: -50 }
+		top: { xAxis: -50, yAxis: -110, top: -15, left: 0 },
+		bottom: { xAxis: -50, yAxis: 0, top: 15, left: 0},
+		left: { xAxis: -110, yAxis: -50, top: 0, left: -15 },
+		right: { xAxis: 0, yAxis: -50, top: 0, left: 15 }
 	};
+
+	const {xAxis, yAxis, top, left} = placeMap[place]
 </script>
 
 <div
-	style="top: {mouseY + top}px; left: {mouseX + left}px; transform: translate({placeMap[place]
-		.xAxis}%, {placeMap[place].yAxis}%);"
+	style="top: {mouseY + top}px; left: {mouseX + left}px; transform: translate({xAxis}%, {yAxis}%);"
 	class="tooltip"
 >
 	{body}
