@@ -1,18 +1,17 @@
 <script lang="ts">
 	import { tooltip as devTooltip } from '$lib/tooltip';
+	import type { ToolTipConifg } from '$lib/types';
 	import SvelteTooltip from 'svelte-tooltip';
 
-	const tooltipConfig = {
+	const tooltipConfig: ToolTipConifg = {
 		body: 'testbody',
-		place: 'bottom',
+		effect: 'float',
+		place: 'right',
 		// type:
-		// effect:
-		offset: { top: 0, left: 0 }
 	};
 </script>
 
 <h1 class="box" use:devTooltip={tooltipConfig}>Hello World</h1>
-
 
 <h1 use:SvelteTooltip={tooltipConfig}>Packfage</h1>
 

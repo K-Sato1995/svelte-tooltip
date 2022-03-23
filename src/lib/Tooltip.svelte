@@ -1,29 +1,53 @@
 <script lang="ts">
-	import type { TooltipOffset, TooltipPlace } from '$lib/types';
-	import TooltipSolid  from '$lib/components/SolidTooltip.svelte'
+	import type { TooltipOffset, TooltipPlace, TooltipEffect } from '$lib/types';
 	export let body;
 	export let mouseX;
 	export let mouseY;
-	export let effect;
+	export let effect: TooltipEffect;
 	export let place: TooltipPlace;
-	export let targetDOMRect
-	// export let offset: TooltipOffset;
-	// const { top, left } = offset;
+	export let targetDOMRect;
+	export let offset: TooltipOffset;
 
-	const placeMap = {
-		top: { xAxis: -50, yAxis: -100, top: -15, left: 0 },
-		bottom: { xAxis: -50, yAxis: 0, top: 15, left: 0 },
-		left: { xAxis: -100, yAxis: -50, top: 0, left: -15 },
-		right: { xAxis: 0, yAxis: -50, top: 0, left: 15 }
+	const { top: offsetTop, left: offsetLeft } = offset;
+
+	// FLOAT: Relative to the mouse position
+	const floatPlaceMap = {
+		top: { xAxis: -50, yAxis: -100, top: -offsetTop, left: 0 },
+		bottom: { xAxis: -50, yAxis: 0, top: offsetTop, left: 0 },
+		left: { xAxis: -100, yAxis: -50, top: 0, left: -offsetLeft },
+		right: { xAxis: 0, yAxis: -50, top: 0, left: offsetLeft }
 	};
 
-	const { xAxis, yAxis, top, left } = placeMap[place];
+	const { xAxis: floatXAxis, yAxis: floatYAxis, top, left } = floatPlaceMap[place];
+
+	// SOLID: Relative to the target DOM
+	const { left: targetLeft, top: targetTop, height, width } = targetDOMRect;
+	const solidPlaceMap = {
+		top: {
+			xAxis: -50,
+			yAxis: 0,
+			top: targetTop - height / 2 - offsetTop,
+			left: targetLeft + width / 2
+		},
+		bottom: {
+			xAxis: -50,
+			yAxis: 0,
+			top: targetTop + height + offsetTop,
+			left: targetLeft + width / 2
+		},
+		left: { xAxis: -100, yAxis: 50, top: targetTop, left: targetLeft - offsetLeft },
+		right: { xAxis: 0, yAxis: 50, top: targetTop, left: targetLeft + width + offsetLeft }
+	};
+
+	const { xAxis: solidXAxis, yAxis: solidYAxis, top: topPos, left: leftPos } = solidPlaceMap[place];
 </script>
 
-<TooltipSolid targetDOMRect={targetDOMRect} body={body} place={place}/>
-
 <div
-	style="top: {mouseY + top}px; left: {mouseX + left}px; transform: translate({xAxis}%, {yAxis}%);"
+	style={effect === 'float'
+		? `top: ${mouseY + top}px; left: ${
+				mouseX + left
+		  }px; transform: translate(${floatXAxis}%, ${floatYAxis}%);`
+		: `left: ${leftPos}px; top: ${topPos}px; transform: translate(${solidXAxis}%, ${solidYAxis}%)`}
 	class="tooltip {place}"
 >
 	{body}
@@ -37,12 +61,11 @@
 	.tooltip {
 		background-color: var(--main-bg-color);
 		color: #fff;
-		border: solid 1px;
 		opacity: 1;
 		position: absolute;
 		padding: 1em;
 		border-radius: 4px;
-    white-space: nowrap;
+		white-space: nowrap;
 	}
 
 	.top::after {
@@ -53,7 +76,7 @@
 		margin-left: -5px;
 		border-width: 5px;
 		border-style: solid;
-		border-color:  var(--main-bg-color) transparent transparent transparent;
+		border-color: var(--main-bg-color) transparent transparent transparent;
 		opacity: 0.9;
 	}
 
@@ -65,7 +88,7 @@
 		margin-left: -5px;
 		border-width: 5px;
 		border-style: solid;
-		border-color: transparent transparent  var(--main-bg-color) transparent;
+		border-color: transparent transparent var(--main-bg-color) transparent;
 	}
 
 	.right::after {
@@ -87,6 +110,6 @@
 		margin-top: -5px;
 		border-width: 5px;
 		border-style: solid;
-		border-color: transparent transparent transparent  var(--main-bg-color);
+		border-color: transparent transparent transparent var(--main-bg-color);
 	}
 </style>

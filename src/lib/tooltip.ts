@@ -7,7 +7,7 @@ const defaultConfig: ToolTipConifg = {
 	place: 'right',
 	effect: 'float',
 	type: 'dark',
-	offset: { top: 0, left: 0 }
+	offset: { top: 15, left: 15 }
 };
 
 export const tooltip = (node, props: ToolTipConifg) => {
@@ -15,8 +15,9 @@ export const tooltip = (node, props: ToolTipConifg) => {
 
 	const offset = props.offset ? props.offset : defaultConfig.offset;
 	const place = props.place ? props.place : defaultConfig.place;
-	const DOMRect = node.getBoundingClientRect()
-	
+	const effect = props.effect ? props.effect : defaultConfig.effect;
+	const DOMRect = node.getBoundingClientRect();
+
 	const handleMouseOver = (event: MouseEvent) => {
 		tooltipComp = new Tooltip({
 			props: {
@@ -25,6 +26,7 @@ export const tooltip = (node, props: ToolTipConifg) => {
 				mouseY: event.pageY,
 				offset: offset,
 				place: place,
+				effect: effect,
 				targetDOMRect: DOMRect
 			},
 			target: document.body
