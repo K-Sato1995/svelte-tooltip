@@ -26,54 +26,62 @@
 
 <style>
 	.tooltip {
+		--main-bg-color: rgba(20, 19, 24, 0.9);
+	}
+
+	.tooltip {
+		background-color: var(--main-bg-color);
+		color: #fff;
 		border: solid 1px;
+		opacity: 1;
 		position: absolute;
-		padding: 4px;
-		background: #fff;
-		white-space: nowrap;
+		padding: 1em;
+		border-radius: 4px;
+    white-space: nowrap;
 	}
 
 	.top::after {
 		content: ' ';
 		position: absolute;
-		top: 100%; /* At the bottom of the tooltip */
+		top: 100%;
 		left: 50%;
 		margin-left: -5px;
 		border-width: 5px;
 		border-style: solid;
-		border-color: black transparent transparent transparent;
+		border-color:  var(--main-bg-color) transparent transparent transparent;
+		opacity: 0.9;
 	}
 
 	.bottom::after {
 		content: ' ';
 		position: absolute;
-		bottom: 100%; /* At the top of the tooltip */
+		bottom: 100%;
 		left: 50%;
 		margin-left: -5px;
 		border-width: 5px;
 		border-style: solid;
-		border-color: transparent transparent black transparent;
+		border-color: transparent transparent  var(--main-bg-color) transparent;
 	}
 
 	.right::after {
 		content: ' ';
 		position: absolute;
 		top: 50%;
-		right: 100%; /* To the left of the tooltip */
+		right: 100%;
 		margin-top: -5px;
 		border-width: 5px;
 		border-style: solid;
-		border-color: transparent black transparent transparent;
+		border-color: transparent var(--main-bg-color) transparent transparent;
 	}
-	
+
 	.left::after {
 		content: ' ';
 		position: absolute;
 		top: 50%;
-		left: 100%; /* To the right of the tooltip */
+		left: 100%;
 		margin-top: -5px;
 		border-width: 5px;
 		border-style: solid;
-		border-color: transparent transparent transparent black;
+		border-color: transparent transparent transparent  var(--main-bg-color);
 	}
 </style>
