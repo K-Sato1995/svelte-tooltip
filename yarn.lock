@@ -1458,13 +1458,6 @@ svelte-preprocess@^4.0.0, svelte-preprocess@^4.10.1:
 
 "svelte-tooltip@file:./package":
   version "0.0.1"
-  dependencies:
-    svelte-tooltip "file:package"
-
-"svelte-tooltip@file:package":
-  version "0.0.1"
-  dependencies:
-    svelte-tooltip "file:package"
 
 svelte2tsx@^0.5.6:
   version "0.5.6"

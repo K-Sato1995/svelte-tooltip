@@ -6,12 +6,12 @@
 		body: 'ToolTipName',
 		// type:
 		// effect:
-		offset: { top: 10, left: 30 }
+		offset: { top: 10, left: 20 }
 	};
 </script>
 
 <h1 use:devTooltip={tooltipConfig}>Hello World</h1>
-<h1 use:tooltip={tooltipConfig}>Package</h1>
+<h1 use:tooltip={tooltipConfig}>Packfage</h1>
 
 <!-- 
   react-tooltip

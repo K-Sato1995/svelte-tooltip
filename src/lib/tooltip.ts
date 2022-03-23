@@ -1,12 +1,12 @@
 import type { SvelteComponent } from 'svelte';
 import Tooltip from './Tooltip.svelte';
 
-const tooltip = (node, props) => {
+export const tooltip = (node, props) => {
 	let tooltipComp: SvelteComponent;
 
 	const { body, offset } = props;
 
-	const handleMouseOver = (event) => {
+	const handleMouseOver = (event: MouseEvent) => {
 		tooltipComp = new Tooltip({
 			props: {
 				body: body,
@@ -18,7 +18,7 @@ const tooltip = (node, props) => {
 		});
 	};
 
-	const handleMouseMove = (event) => {
+	const handleMouseMove = (event: MouseEvent) => {
 		tooltipComp.$set({
 			mouseX: event.pageX,
 			mouseY: event.pageY
@@ -35,11 +35,9 @@ const tooltip = (node, props) => {
 
 	return {
 		destroy() {
-			node.removeEventListner('mouseover', handleMouseOver);
-			node.removeEventListner('mousemove', handleMouseMove);
-			node.removeEventListner('mouseleave', handleMouseLeave);
+			node.removeEventListener('mouseover', handleMouseOver);
+			node.removeEventListener('mousemove', handleMouseMove);
+			node.removeEventListener('mouseleave', handleMouseLeave);
 		}
 	};
 };
-
-export { tooltip };
