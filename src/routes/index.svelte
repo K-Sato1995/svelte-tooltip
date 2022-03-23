@@ -3,14 +3,15 @@
 	import SvelteTooltip from 'svelte-tooltip';
 
 	const tooltipConfig = {
-		body: 'ToolTipName',
+		body: 'testbody',
+		place: 'right',
 		// type:
 		// effect:
-		offset: { top: 10, left: 20 }
+		offset: { top: 0, left: 0 }
 	};
 </script>
 
-<h1 use:devTooltip={tooltipConfig}>Hello World</h1>
+<h1 class="box" use:devTooltip={tooltipConfig}>Hello World</h1>
 <h1 use:SvelteTooltip={tooltipConfig}>Packfage</h1>
 
 <!-- 
@@ -23,9 +24,9 @@
   }
  -->
 <style>
-	/* .box {
+	.box {
 		border: solid 1px;
 		width: 400px;
-		height: 400px;
-	} */
+		height: 100px;
+	}
 </style>

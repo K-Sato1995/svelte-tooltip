@@ -1,18 +1,29 @@
 import type { SvelteComponent } from 'svelte';
 import Tooltip from './Tooltip.svelte';
+import type { ToolTipConifg } from './types';
 
-export const tooltip = (node, props) => {
+const defaultConfig: ToolTipConifg = {
+	body: '',
+	place: 'right',
+	effect: 'float',
+	type: 'dark',
+	offset: { top: 0, left: 0 }
+};
+
+export const tooltip = (node, props: ToolTipConifg) => {
 	let tooltipComp: SvelteComponent;
 
-	const { body, offset } = props;
+	const offset = props.offset ? props.offset : defaultConfig.offset;
+	const place = props.place ? props.place : defaultConfig.place;
 
 	const handleMouseOver = (event: MouseEvent) => {
 		tooltipComp = new Tooltip({
 			props: {
-				body: body,
+				body: props.body,
 				mouseX: event.pageX,
 				mouseY: event.pageY,
-				offset: offset
+				offset: offset,
+				place: place
 			},
 			target: document.body
 		});

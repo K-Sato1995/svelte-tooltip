@@ -11,9 +11,9 @@ const config = {
 		adapter: adapter(),
 		package: {
 			dir: 'package',
-			exports: (filepath) => !/^_|\/_|\.d\.ts$/.test(filepath)	
+			exports: (filepath) => !/^_|\/_|\.d\.ts$/.test(filepath)
 		}
-	},
+	}
 };
 
 export default config;

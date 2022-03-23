@@ -1,4 +1,4 @@
-type Place = 'top' | 'right' | 'bottom' | 'left';
+type TooltipPlace = 'top' | 'right' | 'bottom' | 'left';
 
 type TooltipType = 'dark' | 'success' | 'warning' | 'error' | 'info';
 
@@ -17,4 +17,4 @@ interface ToolTipConifg {
 	offset?: TooltipOffset;
 }
 
-export type { Place, TooltipType, TooltipEffect, TooltipOffset, ToolTipConifg };
+export type { TooltipPlace, TooltipType, TooltipEffect, TooltipOffset, ToolTipConifg };

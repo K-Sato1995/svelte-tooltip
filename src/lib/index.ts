@@ -1,3 +1,3 @@
-import { tooltip as SvelteTooltip} from './tooltip';
+import { tooltip as SvelteTooltip } from './tooltip';
 
 export default SvelteTooltip;
