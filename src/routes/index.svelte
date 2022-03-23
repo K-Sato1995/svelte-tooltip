@@ -6,7 +6,7 @@
 	const tooltipConfig: ToolTipConifg = {
 		body: 'testbody',
 		effect: 'float',
-		place: 'right',
+		place: 'bottom',
 		// type:
 	};
 </script>

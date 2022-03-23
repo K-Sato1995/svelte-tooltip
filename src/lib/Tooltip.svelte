@@ -1,21 +1,20 @@
 <script lang="ts">
-	import type { TooltipOffset, TooltipPlace, TooltipEffect } from '$lib/types';
+	import type {  TooltipPlace, TooltipEffect } from '$lib/types';
 	export let body;
 	export let mouseX;
 	export let mouseY;
 	export let effect: TooltipEffect;
 	export let place: TooltipPlace;
 	export let targetDOMRect;
-	export let offset: TooltipOffset;
 
-	const { top: offsetTop, left: offsetLeft } = offset;
+	const offset = { offsetTop: 15, offsetLeft: 15 }
 
 	// FLOAT: Relative to the mouse position
 	const floatPlaceMap = {
-		top: { xAxis: -50, yAxis: -100, top: -offsetTop, left: 0 },
-		bottom: { xAxis: -50, yAxis: 0, top: offsetTop, left: 0 },
-		left: { xAxis: -100, yAxis: -50, top: 0, left: -offsetLeft },
-		right: { xAxis: 0, yAxis: -50, top: 0, left: offsetLeft }
+		top: { xAxis: -50, yAxis: -100, top: -offset.offsetTop, left: 0 },
+		bottom: { xAxis: -50, yAxis: 0, top: offset.offsetTop, left: 0 },
+		left: { xAxis: -100, yAxis: -50, top: 0, left: -offset.offsetLeft },
+		right: { xAxis: 0, yAxis: -50, top: 0, left: offset.offsetLeft }
 	};
 
 	const { xAxis: floatXAxis, yAxis: floatYAxis, top, left } = floatPlaceMap[place];
@@ -26,17 +25,17 @@
 		top: {
 			xAxis: -50,
 			yAxis: 0,
-			top: targetTop - height / 2 - offsetTop,
+			top: targetTop - height / 2 - offset.offsetTop,
 			left: targetLeft + width / 2
 		},
 		bottom: {
 			xAxis: -50,
 			yAxis: 0,
-			top: targetTop + height + offsetTop,
+			top: targetTop + height + offset.offsetTop,
 			left: targetLeft + width / 2
 		},
-		left: { xAxis: -100, yAxis: 50, top: targetTop, left: targetLeft - offsetLeft },
-		right: { xAxis: 0, yAxis: 50, top: targetTop, left: targetLeft + width + offsetLeft }
+		left: { xAxis: -100, yAxis: 50, top: targetTop, left: targetLeft - offset.offsetLeft },
+		right: { xAxis: 0, yAxis: 50, top: targetTop, left: targetLeft + width + offset.offsetLeft }
 	};
 
 	const { xAxis: solidXAxis, yAxis: solidYAxis, top: topPos, left: leftPos } = solidPlaceMap[place];

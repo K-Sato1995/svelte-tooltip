@@ -7,13 +7,11 @@ const defaultConfig: ToolTipConifg = {
 	place: 'right',
 	effect: 'float',
 	type: 'dark',
-	offset: { top: 15, left: 15 }
 };
 
 export const tooltip = (node, props: ToolTipConifg) => {
 	let tooltipComp: SvelteComponent;
 
-	const offset = props.offset ? props.offset : defaultConfig.offset;
 	const place = props.place ? props.place : defaultConfig.place;
 	const effect = props.effect ? props.effect : defaultConfig.effect;
 	const DOMRect = node.getBoundingClientRect();
@@ -24,7 +22,6 @@ export const tooltip = (node, props: ToolTipConifg) => {
 				body: props.body,
 				mouseX: event.pageX,
 				mouseY: event.pageY,
-				offset: offset,
 				place: place,
 				effect: effect,
 				targetDOMRect: DOMRect
