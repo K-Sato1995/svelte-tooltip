@@ -8,14 +8,12 @@ const config = {
 	preprocess: preprocess(),
 
 	kit: {
-		adapter: adapter()
+		adapter: adapter(),
+		package: {
+			dir: 'package',
+			exports: (filepath) => !/^_|\/_\.ts$/.test(filepath)
+		}
 	},
-	files: {
-		lib: 'src/lib'
-	},
-	package: {
-		dir: 'package'
-	}
 };
 
 export default config;

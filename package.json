@@ -32,6 +32,6 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"package": "^1.0.1"
+		"svelte-tooltip": "file:./package"
 	}
 }
