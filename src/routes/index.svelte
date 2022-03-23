@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { tooltip as devTooltip } from '$lib/tooltip';
-	import tooltip from 'svelte-tooltip';
+	import SvelteTooltip from 'svelte-tooltip';
 
 	const tooltipConfig = {
 		body: 'ToolTipName',
@@ -11,7 +11,7 @@
 </script>
 
 <h1 use:devTooltip={tooltipConfig}>Hello World</h1>
-<h1 use:tooltip={tooltipConfig}>Packfage</h1>
+<h1 use:SvelteTooltip={tooltipConfig}>Packfage</h1>
 
 <!-- 
   react-tooltip
