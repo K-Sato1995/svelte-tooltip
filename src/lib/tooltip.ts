@@ -12,12 +12,12 @@ const defaultConfig: ToolTipConifg = {
 export const tooltip = (node, props: ToolTipConifg) => {
 	let tooltipComp: SvelteComponent;
 
-	const place = props.place ? props.place : defaultConfig.place;
-	const effect = props.effect ? props.effect : defaultConfig.effect;
-	const type = props.type ? props.type : defaultConfig.type;
-	const DOMRect = node.getBoundingClientRect();
-
 	const handleMouseOver = (event: MouseEvent) => {
+		const place = props.place ? props.place : defaultConfig.place;
+		const effect = props.effect ? props.effect : defaultConfig.effect;
+		const type = props.type ? props.type : defaultConfig.type;
+		const DOMRect = node.getBoundingClientRect();
+
 		tooltipComp = new Tooltip({
 			props: {
 				targetDOMRect: DOMRect,
@@ -40,7 +40,7 @@ export const tooltip = (node, props: ToolTipConifg) => {
 
 	const handleMouseLeave = () => {
 		tooltipComp.$destroy();
-	}
+	};
 
 	node.addEventListener('mouseover', handleMouseOver);
 	node.addEventListener('mousemove', handleMouseMove);
@@ -51,6 +51,9 @@ export const tooltip = (node, props: ToolTipConifg) => {
 			node.removeEventListener('mouseover', handleMouseOver);
 			node.removeEventListener('mousemove', handleMouseMove);
 			node.removeEventListener('mouseleave', handleMouseLeave);
+		},
+		update(newConfig) {
+			props = newConfig;
 		}
 	};
 };
