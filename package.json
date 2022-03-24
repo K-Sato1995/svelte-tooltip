@@ -12,7 +12,7 @@
 		"tooltip",
 		"svelte",
 		"svelte-kit"
-  ],
+	],
 	"scripts": {
 		"dev": "svelte-kit dev",
 		"build": "svelte-kit build",

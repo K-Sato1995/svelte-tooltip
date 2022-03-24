@@ -20,7 +20,9 @@
 </script>
 
 <div
-	style={`top: ${mouseY + top}px; left: ${mouseX + left}px; transform: translate(${floatXAxis}%, ${floatYAxis}%); ${style}`}
+	style={`top: ${mouseY + top}px; left: ${
+		mouseX + left
+	}px; transform: translate(${floatXAxis}%, ${floatYAxis}%); ${style}`}
 	class="svelte-tooltip {type} {place}"
 >
 	{#if typeof body === 'string'}
