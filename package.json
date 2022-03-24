@@ -1,12 +1,18 @@
 {
 	"name": "@sato0130/svelte-tooltip",
 	"license": "MIT",
-	"version": "0.0.2",
+	"version": "0.0.3",
 	"author": "K-Sato1995",
 	"repository": "K-Sato1995/svelte-tooltip",
 	"publishConfig": {
 		"access": "public"
 	},
+	"keywords": [
+		"svelte-tooltip",
+		"tooltip",
+		"svelte",
+		"svelte-kit"
+  ],
 	"scripts": {
 		"dev": "svelte-kit dev",
 		"build": "svelte-kit build",
