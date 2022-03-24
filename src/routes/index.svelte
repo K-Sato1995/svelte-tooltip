@@ -21,9 +21,9 @@
 </script>
 
 <div class="wrapper">
-	<div class="wrapper__header"><h1 class="wrapper__header__title">Svelte Tooltip</h1></div>
+	<div class="wrapper__header"><h1 class="wrapper__header__title">@sato0130/svelte-tooltip</h1></div>
 	<div class="wrapper__tooltip-container">
-		<div class="wrapper__tooltip-container__tooltip-box" use:tooltip={config}>DevHover Me</div>
+		<div class="wrapper__tooltip-container__tooltip-box" use:tooltip={config}>Hover Me</div>
 
 		<div class="wrapper__tooltip-container__options">
 			<h3 class="wrapper__tooltip-container__options__title">Effect:</h3>
@@ -49,6 +49,13 @@
 				<button class:active={config.type === "info"}  on:click={handleChange} name="type" value="info">Info</button>
 			</div>
 		</div>
+	</div>
+
+	<div class="wrapper__extra-info">
+		<p class="wrapper__extra-info-sentence">
+			You can also <b>set a svelte component as the body of your tooltip</b> and <b>customise the style</b>.
+			Check <a href="https://svelte.dev/repl/868fdbead6c54d8492891f69d090ee1c?version=3.46.4" target="_blank">Here</a> for those usages.
+	</p>
 	</div>
 </div>
 
@@ -119,6 +126,19 @@
 		margin-right:  0.5rem;
 		margin: 0.5rem 0.5rem 0.5rem 0;
 	}
+
+	.wrapper__extra-info {
+		padding: 0 2rem 2rem 2rem;
+	}
+
+	.wrapper__extra-info-sentence {
+		padding: 0 1rem;
+		line-height: 30px;
+	}
+
+	.wrapper__extra-info-sentence > a{
+		color: var(--main-color)
+	} 
 
 
 </style>
