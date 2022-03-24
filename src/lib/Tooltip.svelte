@@ -68,6 +68,7 @@
 		padding: 1em;
 		border-radius: 4px;
 		white-space: nowrap;
+		z-index: 9999;
 	}
 
 	.top::after {
