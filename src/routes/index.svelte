@@ -24,51 +24,60 @@
 	<div class="wrapper__header"><h1 class="wrapper__header__title">Svelte Tooltip</h1></div>
 	<div class="wrapper__tooltip-container">
 		<!-- <div class="wrapper__tooltip-container__tooltip-box" use:SvelteTooltip={config}>
-			Hover On Me
+			Hover Me
 		</div> -->
-		<div class="wrapper__tooltip-container__tooltip-box" use:tooltip={config}>DevHover On Me</div>
+		<div class="wrapper__tooltip-container__tooltip-box" use:tooltip={config}>DevHover Me</div>
+
 		<div class="wrapper__tooltip-container__options">
-			<h2>Effect: {config.effect}</h2>
-			<button on:click={handleChange} name="effect" value="solid" disabled>Solid(Not Implemented yet)</button>
-			<button on:click={handleChange} name="effect" value="float">Float</button>
+			<h3 class="wrapper__tooltip-container__options__title">Effect:</h3>
+			<div class="wrapper__tooltip-container__options__button-list">
+				<button on:click={handleChange} name="effect" value="solid" disabled>Solid(Not Implemented yet)</button>
+				<button class:active={config.effect === "float"} on:click={handleChange} name="effect" value="float">Float(Default)</button>
+			</div>
 
-			<h2>Place: {config.place}</h2>
-			<button on:click={handleChange} name="place" value="top">Top</button>
-			<button on:click={handleChange} name="place" value="bottom">Bottom</button>
-			<button on:click={handleChange} name="place" value="right">Right</button>
-			<button on:click={handleChange} name="place" value="left">Left</button>
+			<h3 class="wrapper__tooltip-container__options__title">Place:</h3>
+			<div class="wrapper__tooltip-container__options__button-list">
+				<button class:active={config.place === "top"} on:click={handleChange} name="place" value="top">Top</button>
+				<button class:active={config.place === "bottom"}  on:click={handleChange} name="place" value="bottom">Bottom</button>
+				<button class:active={config.place === "right"}  on:click={handleChange} name="place" value="right">Right(Default)</button>
+				<button class:active={config.place === "left"}  on:click={handleChange} name="place" value="left">Left</button>
+			</div>
 
-			<h2>Type: {config.type}</h2>
-			<button on:click={handleChange} name="type" value="dark">Dark</button>
-			<button on:click={handleChange} name="type" value="success">Success</button>
-			<button on:click={handleChange} name="type" value="error">Error</button>
-			<button on:click={handleChange} name="type" value="warning">Warning</button>
-			<button on:click={handleChange} name="type" value="info">Info</button>
+			<h3 class="wrapper__tooltip-container__options__title">Type:</h3>
+			<div class="wrapper__tooltip-container__options__button-list">
+				<button class:active={config.type === "dark"} on:click={handleChange} name="type" value="dark">Dark(Default)</button>
+				<button class:active={config.type === "success"} on:click={handleChange} name="type" value="success">Success</button>
+				<button class:active={config.type === "error"} on:click={handleChange} name="type" value="error">Error</button>
+				<button class:active={config.type === "warning"} on:click={handleChange} name="type" value="warning">Warning</button>
+				<button class:active={config.type === "info"}  on:click={handleChange} name="type" value="info">Info</button>
+			</div>
 		</div>
 	</div>
 </div>
 
-<!-- 
-  react-tooltip
-  props {
-    place: top | right | bottom | left,
-    type: dark | success | warning | errror | info | light
-    effect: solid | float
-    offset: { top: 10, left: 10 }
-  }
- -->
 <style>
 	:root {
-		--main-color: #E6F3FF;
+		--main-color: #2583FD;
 		--secondary-color: #6A7281;
 		--border-color: #e5e7eb;
 		font-family: Helvetica, Arial, sans-serif;
 		font-size: 16px;
 		letter-spacing: 1.4px;
 	}
-	.wrapper {
-		border: solid 2px blue;
-		margin: 0 !important;
+
+	button {
+		background-color: #fff;
+		border: solid 1px var(--border-color);
+		border-radius: 5px;
+		cursor: pointer;
+		padding: 10px;
+		letter-spacing: 1.4px;
+		font-weight: bold;
+	}
+
+	.active {
+		color: #fff;
+		background-color: var(--main-color);
 	}
 
 	.wrapper__header {
@@ -83,23 +92,36 @@
 	}
 
 	.wrapper__tooltip-container {
-		/* width: 600px;
-		height: 400px; */
-		/* border: solid 1px red;  */
 		margin: 0 auto;
 		padding: 2rem;
 	}
 
-	.wrapper__tooltip-container__options {
-		border: solid 1px green;
-	}
 	.wrapper__tooltip-container__tooltip-box {
-		border: solid 1px var(--secondary-color);
+		border: solid 2px var(--main-color);
 		width: 300px;
-		/* height: 300px; */
 		border-radius: 10px;
 		margin: 0 auto;
 		padding: 1rem;
+		margin-bottom: 1rem;
 		text-align: center;
 	}
+
+	.wrapper__tooltip-container__options {
+		padding: 1rem;
+	}
+	
+	.wrapper__tooltip-container__options__title {
+		font-size: 1.2rem;
+	}
+	.wrapper__tooltip-container__options__button-list {
+		border-bottom: solid 1px var(--border-color);
+		padding-bottom: 1rem;
+	}
+
+	.wrapper__tooltip-container__options__button-list > button {
+		margin-right:  0.5rem;
+		margin: 0.5rem 0.5rem 0.5rem 0;
+	}
+
+
 </style>
