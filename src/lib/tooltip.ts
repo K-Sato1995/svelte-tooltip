@@ -38,7 +38,7 @@ export const tooltip = (node, props: ToolTipConifg) => {
 		tooltipComp.$set({ mouseX: event.pageX, mouseY: event.pageY });
 	};
 
-	function handleMouseLeave() {
+	const handleMouseLeave = () => {
 		tooltipComp.$destroy();
 	}
 
