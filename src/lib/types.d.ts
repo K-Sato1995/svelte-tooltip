@@ -6,12 +6,12 @@ type TooltipType = 'dark' | 'success' | 'warning' | 'error' | 'info';
 
 type TooltipEffect = 'float' | 'solid';
 
-interface ToolTipConifg {
+interface TooltipConifg {
 	body: SvelteComponent | string;
 	place?: Place;
 	type?: TooltipType;
 	effect?: TooltipEffect;
-	style: string;
+	style?: string;
 }
 
-export type { TooltipPlace, TooltipType, TooltipEffect, TooltipOffset, ToolTipConifg };
+export type { TooltipPlace, TooltipType, TooltipEffect, TooltipOffset, TooltipConifg };

@@ -1,8 +1,8 @@
 <script lang="ts">
-	import type { ToolTipConifg } from '$lib/types';
+	import type { TooltipConifg } from '$lib/types';
 	export let mouseX: number;
 	export let mouseY: number;
-	export let config: ToolTipConifg;
+	export let config: TooltipConifg;
 
 	const { type, place, body, style } = config;
 	const offset = { offsetTop: 15, offsetLeft: 15 };
