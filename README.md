@@ -36,9 +36,9 @@ You can see the other options below.
 
 | Name      | isRequired | type | Description |
 | --- | ---|---|---|
-| body      | true       | `string` or `SvelteComponent`       | Content in the tooltip       |
-| place   | false        |`top`, `bottom`, `right` or `left`        | Place of the tooltip(Relative to the cursor)       |
-| type   | false        |`dark`, `success`, `warning`, `error` or `info`| Tooltip theme        |
+| body      | true       | `string`, `SvelteComponent`       | Content in the tooltip       |
+| place   | false        |`top`, `bottom`, `right`, `left`        | Place of the tooltip(Relative to the cursor)       |
+| type   | false        |`dark`, `success`, `warning`, `error`, `info`| Tooltip theme        |
 | style   | false        |`string`| custom style     |
 
 
