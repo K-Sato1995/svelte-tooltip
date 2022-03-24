@@ -4,6 +4,8 @@ Light weight svelte-action based tooltip.
 
 ## Demo
 
+https://svelte-tooltip-k-sato1995.vercel.app/
+
 ## Installation
 
 ```bash
@@ -24,7 +26,7 @@ $ yarn add @sato0130/svelte-tooltip
 import SvelteTooltip from '@sato0130/svelte-tooltip';
 ```
 
-2. Use `SvelteTooltip` in any element
+2. Use `SvelteTooltip` in the element you want the tooltip to be on
 
 You can see the other options below.
 
