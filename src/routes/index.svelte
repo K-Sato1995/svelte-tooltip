@@ -1,6 +1,5 @@
 <script lang="ts">
 	import tooltip from '$lib';
-	// import SvelteTooltip from 'svelte-tooltip';
 
 	let config = {
 		body: 'Tooltip body',
