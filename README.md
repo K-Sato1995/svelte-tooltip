@@ -1,5 +1,8 @@
 # @sato0130/svelte-tooltip
 
+![npm bundle size](https://img.shields.io/bundlephobia/minzip/@sato0130/svelte-tooltip)
+![npm](https://img.shields.io/npm/v/@sato0130/svelte-tooltip?color=green)
+
 Light weight svelte-action based tooltip.
 
 ## Demo
