@@ -3,9 +3,8 @@
 	export let mouseX: number;
 	export let mouseY: number;
 	export let config: ToolTipConifg;
-	export let targetDOMRect;
 
-	const { type, effect, place, body } = config;
+	const { type, place, body } = config;
 	const offset = { offsetTop: 15, offsetLeft: 15 };
 
 	// FLOAT: Relative to the mouse position
@@ -17,35 +16,11 @@
 	};
 
 	const { xAxis: floatXAxis, yAxis: floatYAxis, top, left } = floatPlaceMap[place];
-
-	// SOLID: Relative to the target DOM
-	const { left: targetLeft, top: targetTop, height, width } = targetDOMRect;
-	const solidPlaceMap = {
-		top: {
-			xAxis: -50,
-			yAxis: 0,
-			top: targetTop - height / 2 - offset.offsetTop,
-			left: targetLeft + width / 2
-		},
-		bottom: {
-			xAxis: -50,
-			yAxis: 0,
-			top: targetTop + height + offset.offsetTop,
-			left: targetLeft + width / 2
-		},
-		left: { xAxis: -100, yAxis: 50, top: targetTop, left: targetLeft - offset.offsetLeft },
-		right: { xAxis: 0, yAxis: 50, top: targetTop, left: targetLeft + width + offset.offsetLeft }
-	};
-
-	const { xAxis: solidXAxis, yAxis: solidYAxis, top: topPos, left: leftPos } = solidPlaceMap[place];
+	// TODO: Add Effect: Solid
 </script>
 
 <div
-	style={effect === 'float'
-		? `top: ${mouseY + top}px; left: ${
-				mouseX + left
-		  }px; transform: translate(${floatXAxis}%, ${floatYAxis}%);`
-		: `left: ${leftPos}px; top: ${topPos}px; transform: translate(${solidXAxis}%, ${solidYAxis}%)`}
+	style={`top: ${mouseY + top}px; left: ${mouseX + left}px; transform: translate(${floatXAxis}%, ${floatYAxis}%);`}
 	class="svelte-tooltip {type} {place}"
 >
 	{body}

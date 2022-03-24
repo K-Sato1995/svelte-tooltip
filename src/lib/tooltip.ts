@@ -14,24 +14,21 @@ export const tooltip = (node, props: ToolTipConifg) => {
 
 	const handleMouseOver = (event: MouseEvent) => {
 		const place = props.place ? props.place : defaultConfig.place;
-		const effect = props.effect ? props.effect : defaultConfig.effect;
 		const type = props.type ? props.type : defaultConfig.type;
-		const DOMRect = node.getBoundingClientRect();
-
+	
 		tooltipComp = new Tooltip({
 			props: {
-				targetDOMRect: DOMRect,
 				mouseX: event.pageX,
 				mouseY: event.pageY,
 				config: {
 					body: props.body,
 					place: place,
-					effect: effect,
+					effect: defaultConfig.effect,
 					type: type
 				}
 			},
 			target: document.body
-		});
+		});			
 	};
 
 	const handleMouseMove = (event: MouseEvent) => {
@@ -40,7 +37,7 @@ export const tooltip = (node, props: ToolTipConifg) => {
 
 	const handleMouseLeave = () => {
 		tooltipComp.$destroy();
-	};
+	}
 
 	node.addEventListener('mouseover', handleMouseOver);
 	node.addEventListener('mousemove', handleMouseMove);
@@ -53,7 +50,7 @@ export const tooltip = (node, props: ToolTipConifg) => {
 			node.removeEventListener('mouseleave', handleMouseLeave);
 		},
 		update(newConfig) {
-			props = newConfig;
+			props = newConfig
 		}
 	};
 };
