@@ -1,10 +1,9 @@
 <script lang="ts">
 	import tooltip from '$lib';
-	import Test from './test.svelte'
 	import SvelteTooltip from 'svelte-tooltip';
 
 	let config = {
-		body: Test,
+		body: 'Tooltip body',
 		effect: 'float',
 		place: 'right',
 		type: 'dark',
