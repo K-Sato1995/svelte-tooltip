@@ -20,23 +20,22 @@ export const tooltip = (node, props: ToolTipConifg) => {
 	const handleMouseOver = (event: MouseEvent) => {
 		tooltipComp = new Tooltip({
 			props: {
-				body: props.body,
+				targetDOMRect: DOMRect,
 				mouseX: event.pageX,
 				mouseY: event.pageY,
-				place: place,
-				effect: effect,
-				type: type,
-				targetDOMRect: DOMRect
+				config: {
+					body: props.body,
+					place: place,
+					effect: effect,
+					type: type
+				}
 			},
 			target: document.body
 		});
 	};
 
 	const handleMouseMove = (event: MouseEvent) => {
-		tooltipComp.$set({
-			mouseX: event.pageX,
-			mouseY: event.pageY
-		});
+		tooltipComp.$set({ mouseX: event.pageX, mouseY: event.pageY });
 	};
 
 	function handleMouseLeave() {

@@ -1,13 +1,11 @@
 <script lang="ts">
-	import type { TooltipPlace, TooltipEffect, TooltipType } from '$lib/types';
-	export let body;
-	export let mouseX;
-	export let mouseY;
-	export let type: TooltipType;
-	export let effect: TooltipEffect;
-	export let place: TooltipPlace;
+	import type { ToolTipConifg } from '$lib/types';
+	export let mouseX: number;
+	export let mouseY: number;
+	export let config: ToolTipConifg;
 	export let targetDOMRect;
 
+	const { type, effect, place, body } = config;
 	const offset = { offsetTop: 15, offsetLeft: 15 };
 
 	// FLOAT: Relative to the mouse position
@@ -48,13 +46,13 @@
 				mouseX + left
 		  }px; transform: translate(${floatXAxis}%, ${floatYAxis}%);`
 		: `left: ${leftPos}px; top: ${topPos}px; transform: translate(${solidXAxis}%, ${solidYAxis}%)`}
-	class="tooltip {type} {place}"
+	class="svelte-tooltip {type} {place}"
 >
 	{body}
 </div>
 
 <style>
-	.tooltip {
+	.svelte-tooltip {
 		--main-bg-color: rgba(20, 19, 24, 0.9);
 		--success-bg-color: rgba(40, 167, 70, 0.9);
 		--error-bg-color: rgba(220, 52, 70, 0.9);
@@ -62,7 +60,7 @@
 		--info-bg-color: rgba(35, 162, 184, 0.9);
 	}
 
-	.tooltip {
+	.svelte-tooltip {
 		background-color: var(--main-bg-color);
 		color: #fff;
 		opacity: 1;
