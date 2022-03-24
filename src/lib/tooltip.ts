@@ -6,7 +6,8 @@ const defaultConfig: ToolTipConifg = {
 	body: '',
 	place: 'right',
 	effect: 'float',
-	type: 'dark'
+	type: 'dark',
+	style: ''
 };
 
 export const tooltip = (node, props: ToolTipConifg) => {
@@ -15,6 +16,7 @@ export const tooltip = (node, props: ToolTipConifg) => {
 	const handleMouseOver = (event: MouseEvent) => {
 		const place = props.place ? props.place : defaultConfig.place;
 		const type = props.type ? props.type : defaultConfig.type;
+		const customStyle = props.style ? props.style : defaultConfig.style
 	
 		tooltipComp = new Tooltip({
 			props: {
@@ -24,6 +26,7 @@ export const tooltip = (node, props: ToolTipConifg) => {
 					body: props.body,
 					place: place,
 					effect: defaultConfig.effect,
+					style: customStyle,
 					type: type
 				}
 			},

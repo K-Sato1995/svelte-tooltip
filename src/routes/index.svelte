@@ -1,12 +1,14 @@
 <script lang="ts">
 	import tooltip from '$lib';
+	import Test from './test.svelte'
 	import SvelteTooltip from 'svelte-tooltip';
 
 	let config = {
-		body: 'This comment',
+		body: Test,
 		effect: 'float',
 		place: 'right',
-		type: 'dark'
+		type: 'dark',
+		style: ''
 	};
 
 	const handleChange = (event) => {
