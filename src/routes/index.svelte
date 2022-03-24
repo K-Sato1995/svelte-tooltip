@@ -1,6 +1,6 @@
 <script lang="ts">
 	import tooltip from '$lib';
-	import SvelteTooltip from 'svelte-tooltip';
+	// import SvelteTooltip from 'svelte-tooltip';
 
 	let config = {
 		body: 'Tooltip body',
@@ -24,9 +24,6 @@
 <div class="wrapper">
 	<div class="wrapper__header"><h1 class="wrapper__header__title">Svelte Tooltip</h1></div>
 	<div class="wrapper__tooltip-container">
-		<!-- <div class="wrapper__tooltip-container__tooltip-box" use:SvelteTooltip={config}>
-			Hover Me
-		</div> -->
 		<div class="wrapper__tooltip-container__tooltip-box" use:tooltip={config}>DevHover Me</div>
 
 		<div class="wrapper__tooltip-container__options">
