@@ -4,7 +4,7 @@
 	export let mouseY: number;
 	export let config: TooltipConifg;
 
-	const { type, place, body, style } = config;
+	const { type, place, body, bodyAsHTML, style } = config;
 	const offset = { offsetTop: 15, offsetLeft: 15 };
 
 	// FLOAT: Relative to the mouse position
@@ -26,7 +26,11 @@
 	class="svelte-tooltip {type} {place}"
 >
 	{#if typeof body === 'string'}
-		{body}
+		{#if bodyAsHTML}
+			{@html body}
+		{:else}
+			{body}
+		{/if}
 	{:else}
 		<svelte:component this={body} />
 	{/if}

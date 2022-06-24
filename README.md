@@ -39,12 +39,13 @@ You can see the other options below.
 
 ## Options
 
-| Name  | isRequired | type                                          | Description                                  |
-| ----- | ---------- | --------------------------------------------- | -------------------------------------------- |
-| body  | true       | `string`, `SvelteComponent`                   | Content in the tooltip                       |
-| place | false      | `top`, `bottom`, `right`, `left`              | Place of the tooltip(Relative to the cursor) |
-| type  | false      | `dark`, `success`, `warning`, `error`, `info` | Tooltip theme                                |
-| style | false      | `string`                                      | custom style                                 |
+| Name       | isRequired | type                                          | Description                                  |
+| -----      | ---------- | --------------------------------------------- | -------------------------------------------- |
+| body       | true       | `string`, `SvelteComponent`                   | Content in the tooltip                       |
+| bodyAsHTML | false      | `false`, `true`                               | Render the content as HTML                   |
+| place      | false      | `top`, `bottom`, `right`, `left`              | Place of the tooltip(Relative to the cursor) |
+| type       | false      | `dark`, `success`, `warning`, `error`, `info` | Tooltip theme                                |
+| style      | false      | `string`                                      | custom style                                 |
 
 ## License
 

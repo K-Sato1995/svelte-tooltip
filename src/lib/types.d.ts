@@ -8,6 +8,7 @@ type TooltipEffect = 'float' | 'solid';
 
 interface TooltipConifg {
 	body: SvelteComponent | string;
+	bodyAsHTML?: boolean;
 	place?: Place;
 	type?: TooltipType;
 	effect?: TooltipEffect;

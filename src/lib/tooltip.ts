@@ -4,6 +4,7 @@ import type { TooltipConifg } from './types';
 
 const defaultConfig: TooltipConifg = {
 	body: '',
+	bodyAsHTML: false,
 	place: 'right',
 	effect: 'float',
 	type: 'dark',
@@ -14,9 +15,11 @@ export const tooltip = (node, props: TooltipConifg) => {
 	let tooltipComp: SvelteComponent;
 
 	const handleMouseOver = (event: MouseEvent) => {
-		const place = props.place ? props.place : defaultConfig.place;
-		const type = props.type ? props.type : defaultConfig.type;
-		const customStyle = props.style ? props.style : defaultConfig.style;
+		const bodyAsHTML = props?.bodyAsHTML ?? defaultConfig.bodyAsHTML;
+		const place = props?.place ?? defaultConfig.place;
+		const type = props?.type ?? defaultConfig.type;
+		const style = props?.style ?? defaultConfig.style;
+		const effect = props?.effect ?? defaultConfig.effect;
 
 		tooltipComp = new Tooltip({
 			props: {
@@ -24,10 +27,11 @@ export const tooltip = (node, props: TooltipConifg) => {
 				mouseY: event.pageY,
 				config: {
 					body: props.body,
-					place: place,
-					effect: defaultConfig.effect,
-					style: customStyle,
-					type: type
+					bodyAsHTML,
+					place,
+					effect,
+					style,
+					type
 				}
 			},
 			target: document.body
